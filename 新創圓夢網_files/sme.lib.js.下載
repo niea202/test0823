@@ -1,0 +1,387 @@
+﻿var g_obj_device,g_obj_userData;
+var g_obj_scroll=[];
+var g_str_dotPath;
+
+
+(function($){
+	$.fn.dataloading=function() {
+		var p_str_htmlCode="<div data-id=\"loading\" class=\"loading_base\" onselectstart=\"return(false);\">";
+		p_str_htmlCode+="<div class=\"loading_background\"></div>";
+		p_str_htmlCode+="<table style=\"width: 100%; height: 100%; position: absolute; z-index: 1; top: 0px; left: 0px;\">";
+		p_str_htmlCode+="<tr>";
+		p_str_htmlCode+="<td align=\"center\" valign=\"middle\" style=\"width: 100%; height: 100%;\">";
+		p_str_htmlCode+="<table cellspacing=\"0\" cellpadding=\"0\">";
+		p_str_htmlCode+="<tr>";
+		p_str_htmlCode+="<td nowrap=\"nowrap\">";
+		p_str_htmlCode+="<div data-zone=\"image1\" class=\"loading_textBase\" style=\"background-repeat:no-repeat; background-position: 0px 0px; background-image:url('"+g_str_dotPath+"images/loading64x64_1.png'); width:64px; height:64px;\">";
+		p_str_htmlCode+="</div>";
+		p_str_htmlCode+="</td>";
+		p_str_htmlCode+="</tr>";
+		p_str_htmlCode+="</table>";
+		p_str_htmlCode+="</td>";
+		p_str_htmlCode+="</tr>";
+		p_str_htmlCode+="</table>";
+		p_str_htmlCode+="</div>";
+		p_str_htmlCode+="";
+		
+		$(this).append(p_str_htmlCode);
+		
+	}
+
+	$.f_imageAnimate=function(v_obj_json){
+    	//----- 傳入的json結構 -----
+    	var p_obj_json=v_obj_json;
+
+        var p_obj_defaults = { 
+    		"this":null,
+    		"move":null,
+    		"moveLength":null,
+    		"imageNum":null,
+    		"speed":null
+        };
+
+		var p_obj_settings = $.extend(true, p_obj_defaults, p_obj_json);
+		//----- 傳入的json結構 -----
+		
+		if (p_obj_settings.nowThis!=null &&  p_obj_settings.move!=null &&  p_obj_settings.moveLength!=null
+		 &&  p_obj_settings.imageNum!=null &&  p_obj_settings.speed!=null){
+		
+			if (p_obj_settings.move>=(p_obj_defaults.moveLength*p_obj_defaults.imageNum)){
+				p_obj_settings.move=0;
+			}else{
+				p_obj_settings.move+=p_obj_defaults.moveLength;
+			}
+			
+			//console.log(p_int_moveP+":"+p_int_imageNum);
+			
+			p_obj_settings.nowThis.css("background-position",(p_obj_settings.move*-1)+"px 0px");
+			window.setTimeout(function () {
+				$.f_imageAnimate(p_obj_settings);
+			},(p_obj_settings.speed*10));
+		}
+	};
+
+	$.dataMustinput=function(v_obj_json) {
+		var p_int_allPass=1;
+    	var p_obj_this=v_obj_json.nowThis;
+    	var p_str_path=v_obj_json.path;
+		
+		
+		
+		p_obj_this.each(function(){
+			var p_str_displayName="";
+			if ($(this).attr("data-name")){
+				p_str_displayName=$(this).attr("data-name");
+			}
+			if ($.trim($(this).val()).length==0){
+				if (p_int_allPass==1){
+					$(this).focus();
+				}
+				p_int_allPass=0;
+				
+				$.loadValidation({
+					 "path":p_str_path
+					,"targetElement":$(this).parent()
+					,"showText":p_str_displayName+"必要輸入"
+				});
+			}
+		});
+		
+		return(p_int_allPass);
+	}
+	
+	$.removeValidation=function(v_obj_json) {
+        var p_obj_defaults = { 
+    		"targetElement":null
+        };
+        
+        var p_obj_settings = $.extend(true, p_obj_defaults, v_obj_json);
+        
+		if (p_obj_settings.targetElement!=null){
+			p_obj_settings.targetElement.find("div[data-com-name='validation']").remove();
+		}
+	}
+
+	$.loadValidation=function(v_obj_json) {
+        var p_obj_defaults = { 
+    		 "path":null
+    		,"name":null
+    		,"targetElement":null
+    		,"showText":""
+        };
+        
+   		var p_obj_settings = $.extend(true, p_obj_defaults, v_obj_json);
+   		
+   		if (p_obj_settings.name==null){
+   			p_obj_settings.name="index.inc.php";
+   		}
+   		
+   		
+   		if (p_obj_settings.path!=null){
+	   		var p_obj_thisElm=p_obj_settings.targetElement;
+	   		
+			$.get(p_obj_settings.path+"includes/com/validation/"+p_obj_settings.name,{"showText":p_obj_settings.showText},function(data){
+				p_obj_thisElm.append(data.replace(/\n/g,""));
+				
+				p_obj_thisElm.find("div[data-com-name='validation']").fadeIn(function(){
+					$(this).css("display","black");
+				});
+			});
+		}
+	}	
+	
+	$.formData=function(v_obj_json) {
+		var p_obj_sendJsopn={"ajax":1};
+    	var p_obj_this=v_obj_json.nowThis;
+
+		p_obj_this.each(function(){
+			if ($(this).attr("type")=="text" || $(this).attr("type")=="password" || $(this).attr("type")=="hidden"){
+				p_obj_sendJsopn[$(this).attr("name")]=$(this).val();
+			}else if ($(this).attr("type")=="checkbox"){
+				if ($(this).attr("checked")=="checked"){
+					p_obj_sendJsopn[$(this).attr("name")]=$(this).attr("data_val1");
+				}else{
+					p_obj_sendJsopn[$(this).attr("name")]=$(this).attr("data_val2");
+				}
+			}else if ($(this).attr("type")=="radio"){
+				if ($(this).attr("checked")=="checked"){
+					p_obj_sendJsopn[$(this).attr("name")]=$(this).val();
+				}
+			}else{
+				if ($(this).prop("tagName").toLowerCase()=="select"){
+					p_obj_sendJsopn[$(this).attr("name")]=$(this).val();
+					
+					if ($(this).attr("name")=="data9" || $(this).attr("name")=="data10" || $(this).attr("name")=="data13" || $(this).attr("name")=="data14"){
+						p_obj_sendJsopn[$(this).attr("name")+"-1"]=$(this).find(":selected").attr("data-value");
+					}
+					
+				}else if ($(this).prop("tagName").toLowerCase()=="textarea"){
+					p_obj_sendJsopn[$(this).attr("name")]=$(this).val();
+				}
+			}
+		});
+		//console.log(JSON.stringify(p_obj_sendJsopn));
+		return(p_obj_sendJsopn);
+
+	};
+	
+	$.getData=function(v_obj_json,v_obj_userFunction) {
+    	var p_obj_this=this;
+    	//var p_obj_json=v_obj_json.cssJson;
+
+        $.ajax({
+    		async:true, ifModified:true, cache:false, type:"POST",
+            url: v_obj_json.url,
+        	data:v_obj_json.data,
+    		beforeSend: function(v_obj_xhr){
+        		v_obj_xhr.setRequestHeader("If-Modified-Since","Thu, 01 Jan 1970 00:00:00 GMT"); 
+    		},
+            error: function (v_obj_xhr) {
+    			alert("error:"+v_obj_xhr.status);
+            },
+            success: function (v_str_response) {
+            	if (v_obj_json.debug){
+            		if (v_obj_json.debug>=1){
+            			if (v_str_response.indexOf("{")<0){
+		                	var p_str_response=v_str_response;
+            			}else{
+		                	var p_str_response=v_str_response.substr(v_str_response.indexOf("{"));
+            			}
+	                	
+	                	if (v_obj_json.debug==1){
+	                		alert("Source json string:"+p_str_response);
+	                	}else{
+	            			alert("Source json string:"+p_str_response+"\n\n parseJSON json string:"+JSON.stringify($.parseJSON(p_str_response)));
+	                	}
+		    	        
+            			//alert("Source json string:"+p_str_response+"\n\n parseJSON json string:"+JSON.stringify($.parseJSON(p_str_response)));
+            		}
+            	}else{
+					if (v_obj_userFunction!=null && $.varType({"value":v_obj_userFunction}).value=="function"){
+	                	var p_str_response=v_str_response.substr(v_str_response.indexOf("{"));
+	                	//console.log(p_str_response);
+		    	        p_obj_response=$.parseJSON(p_str_response);
+						this.userFunction=v_obj_userFunction;
+						this.userFunction(p_obj_response);
+					}
+            	}
+            }
+        });
+	}
+
+    $.varType=function(v_obj_json){
+    	//----- 傳入的json結構 -----
+    	var p_obj_json=v_obj_json;
+
+        var p_obj_defaults = { 
+    		"value":null
+        };
+
+   		var p_obj_settings = $.extend(true, p_obj_defaults, p_obj_json);
+    	//----- 傳入的json結構 -----
+
+		p_obj_settings.value=Object.prototype.toString.apply(p_obj_settings.value).toString().replace(/\[/g,"").replace(/object /g,"").replace(/\]/g,"").toLocaleLowerCase();
+		
+		//alert(p_obj_settings.value);
+
+    	p_obj_settings.help=function(){
+		    p_str_functionHelp="\
+		    	$.getDevice\n取得設備資訊\n\n\
+		    	語法：$.getDevice(v_obj_json)\n\n\
+		    	使用說明：v_obj_json:{\"value\":JSON格式變數}\n\n\
+		    	使用範例：$.getDevice();\n\n\
+		    	傳回結果：\n"+JSON.stringify(p_obj_settings)+"\
+		    ";
+		    alert(p_str_functionHelp);
+    	};
+
+    	return(p_obj_settings);
+    };
+
+	$.getDirection=function(v_obj_json){
+    	//----- 傳入的json結構 -----
+    	var p_obj_json=v_obj_json;
+		
+        var p_obj_defaults = { 
+    		"value":-1
+        };
+
+   		var p_obj_settings = $.extend(true, p_obj_defaults, p_obj_json);
+    	//----- 傳入的json結構 -----
+
+    	//----- 運作 -----
+		if (window.orientation!=null){
+			p_obj_settings.value=Math.abs(window.orientation);
+		}
+    	//----- 運作 -----
+
+    	p_obj_settings.help=function(){
+		    p_str_functionHelp="\
+		    	$.getDirection\n取得行動裝置的方向\n\n\
+		    	語法：$.getDevice(v_obj_json)\n\n\
+		    	使用說明：v_obj_json:{\"value\":JSON格式變數}\n\n\
+		    	使用範例：$.getDevice();\n\n\
+		    	傳回結果：\n"+JSON.stringify(p_obj_settings)+"\
+		    ";
+		    alert(p_str_functionHelp);
+    	};
+
+    	return(p_obj_settings);
+	};
+
+    $.getDevice=function(v_obj_json){
+    	//----- 傳入的json結構 -----
+    	var p_obj_json=v_obj_json;
+
+        var p_obj_defaults = { 
+    		"name":"computer",
+    		"direction":-1,
+    		"os":{
+    			"name":null,
+				"version":null
+			},
+    		"browser":{
+    			"name":null,
+    			"languageCode":null,
+    			"fontFamily":{
+    				"english":"Arial, Helvetica, sans-serif",
+    				"asian":"微軟正黑體, 細明體, 新細明體"
+    			},
+    			"fullVersion":null,
+    			"majorVersion":null
+    		}
+        };
+
+   		var p_obj_settings = $.extend(true, p_obj_defaults, p_obj_json);
+    	//----- 傳入的json結構 -----
+
+    	//----- 運作 -----
+    	var p_str_userAgent = navigator.userAgent.toLowerCase();
+    	//alert(p_str_userAgent);
+    	
+    	//----- 設備資料 -----
+    	if (p_str_userAgent.indexOf("android")>-1){
+    		//要再用螢幕大小來判斷是phone還是mobile
+    		p_obj_settings.name="phone";
+    		p_obj_settings.os.name="android";
+    		p_obj_settings.os.version=(p_str_userAgent.match( /.+(?:android)[\/: ]([\d.]+)/ ) || [0,0])[1];
+    	}else if (p_str_userAgent.indexOf("iphone")>-1){
+    		p_obj_settings.name="iphone";
+    		p_obj_settings.os.name="ios";
+    		p_obj_settings.os.version=(p_str_userAgent.match( /.+(?:iphone\ os)[\/: ]([\d_]+)/ ) || [0,0])[1].toString().split('_').join('.');
+    	}else if (p_str_userAgent.indexOf("ipad")>-1){
+    		p_obj_settings.name="ipad";
+    		p_obj_settings.os.name="ios";
+    		p_obj_settings.os.version=(p_str_userAgent.match( /.+(?:cpu\ os)[\/: ]([\d_]+)/ ) || [0,0])[1].toString().split('_').join('.');
+    	}else if (p_str_userAgent.indexOf("windows")>-1 || p_str_userAgent.indexOf("win32")>-1){
+    		p_obj_settings.os.name="windows";
+    		p_obj_settings.os.version=(p_str_userAgent.match( /.+(?:windows\ nt)[\/: ]([\d_]+)/ ) || [0,0])[1];
+    	}else if (p_str_userAgent.indexOf("macintosh")>-1 || p_str_userAgent.indexOf("mac os x")>-1){
+    		p_obj_settings.os.name="macOS";
+    	}else if (p_str_userAgent.indexOf("linux")>-1){
+    		p_obj_settings.os.name="linux";
+    	}else if (p_str_userAgent.indexOf("adobeair")>-1){
+    		p_obj_settings.os.name="adobeair";
+    	}
+
+    	//----- 方向垂直或水平 -----
+    	p_obj_settings.direction=$.getDirection().value;
+    	//----- 方向垂直或水平 -----
+    	//----- 設備資料 -----
+    	
+    	//----- 瀏覽器資料 -----
+    	if ($.browser.msie){
+    		p_obj_settings.browser.name="ie";
+    	}else if ($.browser.mozilla){
+    		p_obj_settings.browser.name="firefox";
+    	}else if ($.browser.chrome){
+    		p_obj_settings.browser.name="chrome";
+    	}else if ($.browser.opera){
+    		p_obj_settings.browser.name="opera";
+    	}else if ($.browser.safari){
+    		p_obj_settings.browser.name="safari";
+    	}else{
+    		p_obj_settings.browser.name="none";
+    	}
+
+		var p_str_language = window.navigator.userLanguage || window.navigator.language ;		
+    	p_str_language=p_str_language.toLocaleLowerCase();
+    	if (p_str_language.toLocaleLowerCase()=="zh-hk"){
+    		p_str_language="zh-cn";
+    	}else if (p_str_language.toLocaleLowerCase()=="ja"){
+    		p_str_language="jp";
+    	}else{
+    		if (p_str_language.toLocaleLowerCase().indexOf("en")>-1){
+    			p_str_language="en";
+    		}
+    	}
+
+    	p_obj_settings.browser.languageCode = p_str_language;
+
+        if (p_obj_settings.browser.languageCode=="zh-tw"){
+    	    p_obj_settings.browser.fontFamily.asian="微軟正黑體, 細明體, 新細明體";
+        }else if (p_obj_settings.browser.languageCode=="zh-cn"){
+    	    p_obj_settings.browser.fontFamily.asian="微軟正黑體, 細明體, 新細明體";
+        }else{
+    	    p_obj_settings.browser.fontFamily.english="Arial, Helvetica, sans-serif";
+        }
+
+		
+    	p_obj_settings.browser.fullVersion = $.browser.version;
+    	p_obj_settings.browser.majorVersion = parseInt(p_obj_settings.browser.fullVersion);
+    	//----- 瀏覽器資料 -----
+
+    	p_obj_settings.help=function(){
+		    p_str_functionHelp="\
+		    	$.getDevice\n取得設備資訊\n\n\
+		    	語法：$.getDevice(v_obj_json)\n\n\
+		    	使用說明：v_obj_json:{\"value\":JSON格式變數}\n\n\
+		    	使用範例：$.getDevice();\n\n\
+		    	傳回結果：\n"+JSON.stringify(p_obj_settings)+"\
+		    ";
+		    alert(p_str_functionHelp);
+    	};
+
+    	return(p_obj_settings);
+    };    
+})(jQuery);

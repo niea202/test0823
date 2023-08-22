@@ -1,0 +1,150 @@
+@charset "utf-8";
+@font-face{font-family:"AAA";src:url(../fonts/Aaargh.ttf)}
+.CF:after{content:"";display:block;clear:both}
+.bg-gray{background:url(../images/web/step_bg.jpg);width:100%}
+.faq-box{width:1000px;margin:0 auto}
+.faq-box .Q-box,.faq-box .A-box{box-sizing:border-box;-webkit-box-sizing:border-box;padding:5px}
+.faq-box .Q-box .Q,.faq-box .A-box .A{width:80px;height:80px;color:#FFF;font-size:50px;line-height:78px;text-align:center;box-shadow:#8e918f 2px 2px 5px;}
+.faq-box .Q-box{padding:40px 0;display: flex;}
+.faq-box .A-box{padding-bottom:40px}
+.faq-box .Q-box .Q{background-color:#29d1b2;min-width: 80px;}
+.faq-box .A-box .A{background-color:#00ccde}
+/* .faq-box .Q-box h1,.faq-box .A-box p{float:left;width:850px;margin-left:25px} */
+.faq-box .Q-box h1{height:103px;font-size:31px;line-height:40px;color:#444;font-family:"微軟正黑體","新細明體";margin-left: 1rem;}
+.faq-box .A-box p{color:#444;font-family:"微軟正黑體","新細明體";font-size:22px;line-height:1.5}
+.news-inside{width:1000px;margin:0 auto}
+.show-box{width:1000px;border-bottom:#a9aaab dashed 1px;box-sizing:border-box;-webkit-box-sizing:border-box}
+.show-box h1{width:1000px;min-height:52px;color:#221815;font-size:32px;font-family:"微軟正黑體","新細明體";border-bottom:#2f292b 1px solid;margin:10px auto;letter-spacing:1px}
+.show-box .explanation{min-height:300px}
+.show-box .explanation p{text-align:justify;text-justify:inter-ideograph;color:#221815;font-family:"微軟正黑體","新細明體";font-size:16px;line-height:1.5}
+.show-box .explanation img{
+    text-align:center;
+    /* width: 100%; */
+    max-width:900px;
+    height:auto;
+    padding:10px;
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.show-box .explanation .image{text-align:center;}
+.show-box .fb{width:1000px;height:25px;margin:5px auto}
+.show-box .date,.news-list li .date{width:1000px;height:25px;font-size:9px!important;margin:5px auto;color:#626262;font-family:Arial,Helvetica,sans-serif;letter-spacing:.8px}
+.news-list{width:1000px;box-sizing:border-box;-webkit-box-sizing:border-box}
+.news-list li{border-bottom:#a9aaab dashed 1px;height:86px;width:1000px;overflow:hidden;padding:10px}
+.news-list h3{width:1000px;height:20px;line-height:20px}
+.news-list h3 a{display:block;width:1000px;color:#221815;font-family:"微軟正黑體","新細明體";font-size:18px;height:20px;line-height:20px;text-decoration:none}
+.news-list h3 a:hover{color:#626262;text-decoration:underline}
+.news-list p{color:#626262;font-family:"微軟正黑體","新細明體";font-size:11px!important;line-height:1.5;width:635px;height:40px;overflow:hidden;letter-spacing:1px;margin-top:10px}
+.dream .search{box-sizing:border-box;-webkit-box-sizing:border-box;width:1000px;margin:0 auto;padding:30px 0;font-family:"微軟正黑體","Arial Unicode MS";font-size:16px;line-height:25px;color:#333;letter-spacing:1.5px}
+.M-L01{margin-left:80px}
+.dream .search input[type="checkbox"]{width:10px;height:10px;vertical-align:central;margin:0 3px}
+.dream .search input[type="radio"]{width:10px;height:10px;vertical-align:central;margin:0 3px}
+.dream .search input{width:380px;height:27px;font-size:16px;border:#7d7d7d 1px solid}
+.dream .search .search_bar{text-align:center;font-size:24px;font-family:"微軟正黑體";font-size:16px;color:#666;margin-bottom:10px}
+.dream .search .txt01{width:100%;text-align:center;font-family:"微軟正黑體","Arial Unicode MS";font-size:14px;font-weight:700;color:#999;padding-bottom:25px}
+.dream .search ul{width:1000px}
+.dream .search ul li{width:1000px;min-height:30px;padding:10px 0;border-bottom:#cecece 1px dashed}
+.dream .search i{font-size:24px;padding-left:10px;cursor:pointer}
+.content .step-dream{width:100%;height:310px;margin:0 auto;overflow:hidden;padding-top:20px}
+.content .step-dream ul{display:block;width:1000px;overflow:hidden;margin:0 auto}
+.content .step-dream ul li{float:left;margin-left:20px;margin-right:20px}
+.content .step-dream ul li a{display:block;width:210px;overflow:hidden;text-decoration:none}
+.content .step-dream ul li a .txt_en{text-align:center;font-family:Verdana,Geneva,sans-serif;font-size:20px;color:#333;padding-top:220px}
+.content .step-dream ul li a .txt_ch{text-align:center;font-family:"微軟正黑體","Arial Unicode MS";font-size:20px;color:#333;padding-top:5px}
+.content .step-dream ul li a.a1{background:url(../images/web/creativity_icon.png) top no-repeat;width:210px;height:280px}
+.content .step-dream ul li a.a2{background:url(../images/web/mentor_icon.png) top no-repeat;width:210px;height:280px}
+.content .step-dream ul li a.a3{background:url(../images/web/capital_icon.png) top no-repeat;width:210px;height:280px}
+.content .step-dream ul li a.a4{background:url(../images/web/rd_icon.png) top no-repeat;width:210px;height:280px}
+.content .step-dream ul li a.a1:hover{background:url(../images/web/creativity_icon02.png) top no-repeat}
+.content .step-dream ul li a.a2:hover{background:url(../images/web/mentor_icon02.png) top no-repeat}
+.content .step-dream ul li a.a3:hover{background:url(../images/web/capital_icon02.png) top no-repeat}
+.content .step-dream ul li a.a4:hover{background:url(../images/web/rd_icon02.png) top no-repeat}
+.content .dream-list{width:1000px;margin:0 auto;padding-bottom:50px;position:relative}
+.content .dream-list .arrow{position:absolute;width:45px;height:17px;top:-17px;left:100px}
+.content .dream-list ul{box-sizing:border-box;-webkit-box-sizing:border-box;width:1000px;margin:0 auto;padding-top:50px}
+.content .dream-list ul li{box-sizing:border-box;-webkit-box-sizing:border-box;float:left;margin-bottom:40px}
+.content .dream-list ul li:nth-child(2n){margin-left:40px}
+.content .dream-list ul li.bg{box-sizing:border-box;-webkit-box-sizing:border-box;width:450px;min-height:215px;background-color:#FFF;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;box-shadow:2px 2px 8px rgba(0%,0%,0%,0.4);position:relative}
+.content .dream-list ul li a{text-decoration:none;font-family:"微軟正黑體"}
+.content .dream-list ul li.bg:hover{background-color:#ededed}
+.content .dream-list ul li .label_a{position:absolute;right:-10px;top:11px;text-align:center;line-height:31px;font-family:"微軟正黑體";color:#FFF;font-size:18px;width:85px;height:35px;box-shadow:#999 2px 2px 3px}
+.content .dream-list ul li .label_b{position:absolute;right:-10px;top:51px;text-align:center;line-height:31px;font-family:"微軟正黑體";color:#FFF;font-size:18px;width:85px;height:35px;box-shadow:#999 2px 2px 3px}
+.content .dream-list ul li .label_c{position:absolute;right:-10px;top:91px;text-align:center;line-height:31px;font-family:"微軟正黑體";color:#FFF;font-size:18px;width:85px;height:35px;box-shadow:#999 2px 2px 3px}
+.content .dream-list ul li .label_d{position:absolute;right:-10px;top:131px;text-align:center;line-height:31px;font-family:"微軟正黑體";color:#FFF;font-size:18px;width:85px;height:35px;box-shadow:#999 2px 2px 3px}
+.content .dream-list ul li .title{width:430px;height:50px;border-bottom:#afafaf 1px dashed;font-size:28px;line-height:50px;padding:5px 10px;font-family:"微軟正黑體"}
+.content .dream-list ul li .pp{min-height:100px;width:370px;padding:5px 10px;font-size:22px;color:#3a3636;overflow:hidden;font-family:"微軟正黑體"}
+.content .dream-list ul li a.more{display:block;width:100px;height:35px;font-family:"微軟正黑體";font-size:18px;margin:5px;color:#3a3636}
+.content .dream-list ul li a.more:hover{text-decoration:underline}
+.dream-details{margin:0 auto;width:1000px;height:122px}
+.dream-details .pic{width:122px;height:122px;border:50%;float:left;margin-right:15px}
+.dream-details .title{box-sizing:border-box;-webkit-box-sizing:border-box;color:#353535;width:840px;height:122px;padding-top:30px}
+.dream-details .title .en{font-family:AAA;font-size:22px}
+.dream-details .title .zn{font-family:"微軟正黑體","新細明體";font-size:24px;font-weight:700}
+.dreamdetails-box{box-sizing:border-box;-webkit-box-sizing:border-box;width:1000px;padding:15px 0;margin:35px auto 0;position:relative}
+.dreamdetails-box .arrow{position:absolute;top:-17px;left:30px}
+.dreamdetails-box .title{font-size:28px;font-family:"微軟正黑體","新細明體";line-height:70px;height:70px;border-bottom:#afafaf dashed 1px;padding-left:8px}
+.dreamdetails-box .intro-box{box-sizing:border-box;-webkit-box-sizing:border-box;width:1000px;margin:20px auto;border-radius:5px;border:#a0a0a0 1px solid;background-color:#FFF}
+.dreamdetails-box .intro-box .intro{padding:20px}
+.dreamdetails-box .intro-box .intro label,.dreamdetails-box .intro-box .intro h2{height:30px;width:100%;display:block;font-family:"微軟正黑體","新細明體";font-size:18px;font-weight:700;color:#000;letter-spacing:1px;padding-top:12px}
+.dreamdetails-box .intro-box .intro p{font-size:18px;color:#3a3636;font-family:"微軟正黑體","新細明體";line-height:1.5}
+.dreamdetails-box .intro-box .intro .under-box{font-size:13px;font-family:"微軟正黑體","新細明體";line-height:1.5;border-top:#c5c5c5 1px dashed;margin-top:10px;padding-top:8px}
+.downlost-list{width:800px;margin:36px auto 30px}
+.downlost-list .item{width:800px;height:50px;color:#389bca;font-size:28px;font-family:"微軟正黑體","新細明體";border-bottom:dashed #000 1px}
+.downlost-list ul{width:800px}
+.downlost-list ul li{box-sizing:border-box;-webkit-box-sizing:border-box;width:800px;min-height:50px;border-bottom:dashed #000 1px;padding-left:50px;color:#3a3636;font-size:15px;font-family:"微軟正黑體","新細明體";line-height:1.8}
+.downlost-list ul li i{box-sizing:border-box;-webkit-box-sizing:border-box;width:30px;height:30px;border-radius:50%;background-color:#fee3ae;padding:8px 0 0 6px;float:left;margin-top:10px}
+.downlost-list ul li a{color:#4a4949;text-decoration:none}
+.downlost-list ul li a:hover{color:#389bca}
+.talk-form{box-sizing:border-box;-webkit-box-sizing:border-box;width:1000px;height:230px;margin:0 auto 10px;padding:35px 0 0 115px;background:#f3f3f3;position:relative;border:1px #c9c9c9 solid;border-radius:5px}
+.talk-form .tag{width:135px;height:42px;color:#fff;position:absolute;top:10px;left:-50px;box-shadow:#666 2px 2px 5px;font-family:"微軟正黑體","新細明體";text-align:center;line-height:42px;font-size:25px;font-weight:700}
+.talk-form input{width:392px;height:37px;margin:0 10px 20px 0;border:#a0a0a0 1px solid;padding-left:15px;color:#494848;font-size:20px;font-family:"微軟正黑體","新細明體"}
+.talk-form select{width:410px;height:47px;margin:0 10px 20px 0;border:#a0a0a0 1px solid;padding-left:15px;color:#494848;font-size:20px;font-family:"微軟正黑體","新細明體"}
+.talk-form textarea{border:#a0a0a0 1px solid;padding-left:15px;color:#494848;font-size:20px;font-family:"微軟正黑體","新細明體"}
+.sendBox{box-sizing:border-box;-webkit-box-sizing:border-box;width:1000px;height:100px;margin:0 auto;position:relative;padding-left:450px;padding-top:30px}
+.sendBox .note{position:absolute;top:30px;right:100px;width:300px;height:36x;font-size:12px;line-height:19px;font-family:"微軟正黑體","新細明體"}
+.sendBox .note a{color:#7e059c}
+.sendBox .note a:hover{text-decoration:none}
+.talk{box-sizing:border-box;-webkit-box-sizing:border-box;width:1000px;margin:20px auto;text-align:center;height:92px;border-top:1px dashed #a9aaab;border-bottom:1px dashed #a9aaab;font-size:18px;color:#490176;font-family:"微軟正黑體","新細明體";padding-top:15px;letter-spacing:1px}
+.talk span{font-size:35px;color:#fc027e;font-weight:bolder;letter-spacing:2px;font-family:Arial,Helvetica,sans-serif}
+.talk-bottom{box-sizing:border-box;-webkit-box-sizing:border-box;width:1000px;min-height:333px;margin:0 auto;padding:20px 0}
+.talk-bottom h2{width:1000px;height:23px;font-size:23px;color:#494645;font-family:"微軟正黑體","新細明體";text-align:center;margin:10px auto}
+.talk-bottom .search-bar{width:1000px;height:50px;margin-top:30px}
+.talk-bottom .search-bar .tag{width:135px;height:42px;color:#fff;box-shadow:#666 2px 2px 5px;font-family:"微軟正黑體","新細明體";text-align:center;line-height:42px;font-size:25px;font-weight:700;float:left}
+.talk-bottom .search-bar input{width:714px;height:44px;border:#a0a0a0 1px solid;padding-left:15px;color:#494848;font-size:20px;font-family:"微軟正黑體","新細明體";margin-left:20px}
+.talk-bottom .search-bar a{float:right;display:block;width:44px;height:44px;line-height:44px;text-align:center;color:#666;font-size:40px;margin-right:60px}
+.talk-bottom .search-bar a:hover{color:#6cc2f3}
+.talk-bottom .search-bar span{float:right;display:block;width:44px;height:44px;line-height:44px;text-align:center;color:#666;font-size:40px;margin-right:60px}
+.talk-bottom .search-bar span:hover{color:#6cc2f3}
+.talk-bottom ul{width:700px;margin:20px auto}
+.talk-bottom ul li{width:98px;height:40px;float:left}
+.talk-bottom ul li a{display:block;color:#221815;width:98px;height:40px;text-align:center;line-height:40px;font-size:18px;font-family:"微軟正黑體","新細明體";text-decoration:none}
+.talk-bottom ul li a:hover{text-decoration:underline}
+.content .people .search_02{width:1000px;margin:0 auto 50px}
+.content .people .search_02 .txt02{width:1000px;text-align:center;font-family:"微軟正黑體","Arial Unicode MS";font-size:24px;font-weight:700;color:#333;margin-top:15px;margin-bottom:10px}
+/* .content .people .search_02 ul li{float:left;display:block;width:319px;height:202px;background:url(../images/web/funding_bg.jpg) no-repeat;-webkit-box-shadow:5px 5px 10px rgba(0%,0%,0%,0.3);-moz-box-shadow:5px 5px 10px rgba(0%,0%,0%,0.3);box-shadow:5px 5px 10px rgba(0%,0%,0%,0.3);margin-left:5px;margin-right:5px;margin-bottom:25px} */
+.content .people .search_02 ul li a{text-decoration:none;font-family:"微軟正黑體","Arial Unicode MS";color:#333;display:block;width:319px;height:202px;background:url(../images/web/funding_bg.jpg) no-repeat;position:relative}
+.content .people .search_02 ul li a .video{position:absolute;width:23px;height:23px;color:#FFF;font-size:18px;line-height:23px;text-align:center;bottom:9px;left:9px;background-color:#9a9a9a;font-family:"微軟正黑體","Arial Unicode MS"}
+.content .people .search_02 ul li a .icon{float:left;padding-top:30px;padding-left:10px;margin-right:10px;height:309px}
+.content .people .search_02 ul li a .title{width:50%;font-size:20px;float:left;margin-top:8px;margin-bottom:10px}
+.content .people .search_02 ul li a .txt03{font-size:14px;padding-left:5px;padding-right:5px}
+.content .people .search_02 ul li a:hover{background:url(../images/web/funding_bg_02.jpg) no-repeat}
+.bg-green{background:#7fc604}
+.bg-pink{background:#fa62b2}
+.bg-orange{background:#feb01a}
+.bg-blue{background:#FFC773}
+.bg-yellow{background:#ffc13b}
+.font-green{color:#02581d}
+.font-blue{color:#1060b9}
+.font-pink{color:#f31fa1}
+.font-orange{color:#e86404}
+.font-yellow{color:#ffc13b}
+.keyword{margin-top:5px}
+.keyword span{display:block;font-family:"微軟正黑體";font-size:15px;color:#767676;background-color:#fff799;padding:3px;float:left;margin-left:5px;margin-bottom:8px}
+.send{margin:0 auto;display:block;width:120px;height:35px;color:#3a3636;font-size:16px;line-height:35px;text-decoration:none;text-align:center;font-family:"微軟正黑體","新細明體";background:#fff605}
+.send:hover{box-shadow:inset #bcb506 2px 2px 5px}
+.back_btn{display:block;width:87px;height:25px;font-size:16px;background-color:#CCC;font-family:Verdana,Geneva,sans-serif;line-height:25px;text-align:center;margin:20px 0 20px 20px;text-decoration:none}
+.back_btn:hover{color:#fff}
+.bn-send{display:block;font-family:"微軟正黑體","新細明體";width:135px;height:36px;background-color:#bce5eb;color:#02075a;font-size:18px;line-height:36px;text-align:center;text-decoration:none;cursor:pointer}
+.bn-send:hover{box-shadow:inset #73959a 2px 2px 3px}

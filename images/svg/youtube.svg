@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <g id="组_22" data-name="组 22" transform="translate(-893 -3451)">
+    <g id="椭圆_9" data-name="椭圆 9" transform="translate(893 3451)" fill="none" stroke="#f41b09" stroke-width="1">
+      <circle cx="25" cy="25" r="25" stroke="none"/>
+      <circle cx="25" cy="25" r="24.5" fill="none"/>
+    </g>
+    <path id="Icon_ionic-logo-youtube" data-name="Icon ionic-logo-youtube" d="M26.335,8.891a4.025,4.025,0,0,0-3.832-4.2c-2.869-.135-5.794-.186-8.782-.186h-.932c-2.982,0-5.913.052-8.782.186A4.034,4.034,0,0,0,.181,8.9C.052,10.745-.005,12.588,0,14.431s.052,3.687.176,5.535A4.039,4.039,0,0,0,4,24.186c3.014.14,6.1.2,9.248.2q4.722.016,9.248-.2a4.039,4.039,0,0,0,3.832-4.22c.124-1.849.181-3.692.176-5.54Q26.521,11.661,26.335,8.891ZM10.718,19.511V9.336l7.508,5.085Z" transform="translate(905 3461.5)" fill="#f41b09"/>
+  </g>
+</svg>

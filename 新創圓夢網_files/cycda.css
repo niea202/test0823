@@ -1,0 +1,11 @@
+.txt06{max-width:840px}
+.clearfix{clear:both}
+.content_title{font-size:28px;color:#389bca;padding:10px 0}
+.cycda .search{box-sizing:border-box;-webkit-box-sizing:border-box;width:1000px;margin:0 auto;padding:30px 0;font-family:"微軟正黑體","Arial Unicode MS";font-size:16px;line-height:25px;color:#333;letter-spacing:1.5px}
+.M-L01{margin-left:80px}
+.cycda .search input[type="checkbox"]{width:10px;height:10px;vertical-align:central;margin:0 3px}
+.cycda .search input{width:380px;height:27px;border:#7d7d7d 1px solid}
+.cycda .search ul{width:1000px}
+.cycda .search ul li{width:1000px;min-height:30px;padding:10px 0;border-bottom:#cecece 1px dashed}
+.send{margin:0 auto;display:block;width:120px;height:35px;color:#3a3636;font-size:16px;line-height:35px;text-decoration:none;text-align:center;font-family:"微軟正黑體","新細明體";background:#fff605}
+.send:hover{box-shadow:inset #bcb506 2px 2px 5px}
